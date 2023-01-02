@@ -15,11 +15,10 @@ def index(request):
 
 
 def wiki(request, title):
-    content_md = util.get_entry(title)
+    content_md, page_title = util.get_entry(title)
     if content_md:
         convertor = Markdown()
         content_html = str(convertor.convert(content_md)).strip()
-        page_title = content_md.split('\n')[0].split(' ')[1]
 
         return render(request,"encyclopedia/page.html", context={"content": content_html, "title": page_title})
     else:
@@ -29,12 +28,11 @@ def wiki(request, title):
 def search(request):
     if request.method == "GET":
         search_item = request.GET["q"]
-        content_md = util.get_entry(search_item)
+        content_md, page_title  = util.get_entry(search_item)
         
         if content_md:
             convertor = Markdown()
             content_html = str(convertor.convert(content_md)).strip()
-            page_title = content_md.split('\n')[0].split(' ')[1]
             return render(request,"encyclopedia/page.html", context={"content": content_html, "title": page_title})
         else:
             # If there is a substring in a query those entries would be returned
@@ -42,7 +40,7 @@ def search(request):
             entries = []
             found = False
             for page in existing_pages:
-                if search_item in page:
+                if search_item.lower() in page.lower():
                     entries.append(page)
                     found = True 
             return render(request, "encyclopedia/search.html", context={"entries": entries, "search_item":search_item, "found":found})         
@@ -74,22 +72,24 @@ def new_page(request):
 
 def edit_page(request, title):
     if request.method == "GET":
-        content_md = util.get_entry(title)
+        content_md, page_title = util.get_entry(title)
         if content_md:
-            form = EditEntryForm(initial={"title": title, "content":content_md})
-            return render(request, 'encyclopedia/edit.html', context={"form": form, "error": False, "entry_title": title})
+            form = EditEntryForm(initial={"title": page_title, "content": content_md})
+            return render(request, 'encyclopedia/edit.html', context={"form": form, "error": False, "entry_title": page_title})
         else:
-            return render(request, 'encyclopedia/edit.html', context={"error": True, "entry_title": title})
+            return render(request, 'encyclopedia/edit.html', context={"error": True, "entry_title": page_title})
     
     elif request.method == "POST":
         form = EditEntryForm(request.POST)
         if form.is_valid():
             edited_title = str(form.cleaned_data["title"])
             edited_content = form.cleaned_data["content"]
+            edited_content = edited_content.strip()
+            print(edited_content)
             
             # There should be always in the content # {title} ...
-            first_two_char = [edited_content[0], edited_content[1]]
-            if not "#" in first_two_char:
+            first_char = edited_content[0]
+            if  "#" != first_char:
                 edited_content = f"# {edited_title}\n" + edited_content
             
             # If title is changed then in content # {title} should be also changed with edited_title no matter
@@ -112,7 +112,9 @@ def edit_page(request, title):
 
 def delete_page(request, title):
     all_entries = util.list_entries()
-    if title in all_entries:
+    print(title)
+    # %20 is blank space 
+    if title.replace('%20', ' ') in all_entries:
         util.delete_entry(title)
     return redirect(reverse('encyclopedia:index'))
 

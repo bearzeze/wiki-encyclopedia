@@ -1,0 +1,2 @@
+# MATLAB
+MATLAB is a programming and numeric computing platform used by millions of engineers and scientists to analyze data, develop algorithms, and create models developed by [MathWorks](https://www.mathworks.com/products/matlab.html).

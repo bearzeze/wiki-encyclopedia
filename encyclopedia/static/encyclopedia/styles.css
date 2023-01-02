@@ -69,7 +69,7 @@ a {
 }
 
 .back-btn-not-found {
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .main h1 {
@@ -103,4 +103,12 @@ h1.all-pages-heading {
 
 .no-page {
     color: rgb(138, 43, 226);
+}
+
+h1.black {
+    color: black;
+}
+
+p.not-found {
+    margin-top: 3%;
 }

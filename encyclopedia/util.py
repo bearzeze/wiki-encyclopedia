@@ -25,20 +25,20 @@ def save_entry(title, content):
     default_storage.save(filename, ContentFile(content))
 
 
-def get_entry(title):
+def get_entry(word):
     """
     Retrieves an encyclopedia entry by its title. If no such
     entry exists, the function returns None. 
     UPDATE: It will try with the way user typed, capitalized, upper case search before returning None
     """
-    for word in [title, title.capitalize(), title.upper()]:
+    for title in [word, word.capitalize(), word.upper()]:
         try:
-            f = default_storage.open(f"entries/{word}.md")
-            return f.read().decode("utf-8")
+            f = default_storage.open(f"entries/{title}.md")
+            return f.read().decode("utf-8"), title
         except FileNotFoundError:
             continue
     else:
-        return None
+        return None, None
 
 
 def delete_entry(title):

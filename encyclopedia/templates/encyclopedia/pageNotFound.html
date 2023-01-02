@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block body %}
-<h1> Page '{{ title }}' Not Found</h1>
-
+<h1 class="black"> Page Not Found</h1>
+ <p class="not-found">Page '<b>{{title}}</b>' does not exist. Create instead.</p>
+    <a href="{% url 'encyclopedia:new_page' %}" class="back"><button class="back-btn">Create</button></a>
     <a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn-not-found">Home</button></a>
     {% endblock %}

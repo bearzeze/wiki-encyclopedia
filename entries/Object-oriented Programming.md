@@ -1,0 +1,2 @@
+# Object-oriented Programming
+Object-oriented programming (**OOP**) is a programming paradigm based on the concept of "objects", which can contain data and code. The data is in the form of fields (often known as attributes or properties), and the code is in the form of procedures (often known as methods).
