@@ -1,0 +1,11 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{{ title }} - Zezepedia
+{% endblock %}
+
+{% block body %}
+<h1> Page '{{ title }}' Not Found</h1>
+
+    <a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn-not-found">Home</button></a>
+    {% endblock %}

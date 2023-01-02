@@ -1,0 +1,15 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Zezepedia
+{% endblock %}
+
+{% block body %}
+    <h1 class="all-pages-heading">All Pages</h1>
+    <ul>
+        {% for entry in entries %}
+        <li><a class="list-page" href="/wiki/{{entry}}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

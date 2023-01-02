@@ -1,0 +1,31 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Edit {{entry_title}} - Zezepedia
+{% endblock %}
+
+{% block body %}
+
+{% if  not error %}
+
+<h1 class="all-pages-heading">Edit {{entry_title}} Page</h1>
+<form action="{{ entry_title }}" method="post" class="edit-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <input type="submit" class="back-btn" value="Save">
+    
+</form>
+<a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn">Home</button></a>
+
+{% else %}
+<h1 class="all-pages-heading">Page Not Found</h1>
+
+<p>There is no <span class="no-page">{{ entry_title }} </span>page in the Zezepedia to being edit. Do you want to create this page instead?</p>
+
+<a href="{% url 'encyclopedia:new_page' %}" class="back"><button class="back-btn">Create</button></a>
+<a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn">Home</button></a>
+
+{% endif %}
+
+{% endblock %}

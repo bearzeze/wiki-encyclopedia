@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Create Page - Zezepedia
+{% endblock %}
+
+{% block body %}
+<h1 class="all-pages-heading">Create New Page</h1>
+
+{% if  not error %}
+
+<form action="{% url 'encyclopedia:new_page' %}" method="post" class="create-form">
+    {% csrf_token %}
+    {{ create_form.as_p }}
+    
+    <input type="submit" class="back-btn" value="Create">
+    
+    <a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn">Home</button></a>
+    
+</form>
+{% else %}
+<p>There is already <a class="list-page" href="/wiki/{{title}}">{{ title }}</a> page in the Zezepedia.</p>
+
+<a href="{% url 'encyclopedia:new_page' %}" class="back"><button class="back-btn">Back</button></a>
+<a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn">Home</button></a>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    height: 90vh;
+    width: 80%;
+}
+
+.main {
+    padding: 10px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin: 5px 10px 10px 5px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+
+.page_heading {
+    margin-top: 0px;
+    padding-top: 20px;
+} 
+
+a.back {
+    text-decoration: none;
+    color: rgb(138, 43, 226);
+}
+
+a {
+    color: rgb(138, 43, 226);
+}
+
+.list-page {
+    color: rgb(138, 43, 226);
+}
+
+.back-btn,
+.back-btn-not-found {
+    background-color: #f0f0f0;
+    padding: 6px 12px ;
+    margin-top: 20px;
+    border: 2px solid #f0f0f0;
+    color: rgb(138, 43, 226);
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.back-btn-not-found {
+    margin-top: 50px;
+}
+
+.main h1 {
+    margin-bottom: 2%;
+    color: rgb(138, 43, 226);
+}
+
+h1.all-pages-heading {
+    color:black;
+}
+
+.main h2 {
+    margin-left: 1%;
+    font-size: 30px;
+}
+
+.create-form textarea, 
+.edit-form textarea {
+    width: 70%;
+    height: 60vh;
+    padding: 1%;
+}
+
+.title-new {
+    width: 35%;
+}
+
+.edit-form {
+    display: inline;
+}
+
+.no-page {
+    color: rgb(138, 43, 226);
+}
