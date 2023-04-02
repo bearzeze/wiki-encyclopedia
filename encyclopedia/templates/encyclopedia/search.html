@@ -1,7 +1,7 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-Serch - Zezepedia
+Search - Zezepedia
 {% endblock %}
 
 {% block body %}
@@ -10,7 +10,7 @@ Serch - Zezepedia
         <p>You have entered <b>'{{ search_item }}'</b>. Did you mean:</p>
         <ul>
             {% for entry in entries %}
-            <li><a class="list-page" href="/wiki/{{entry}}">{{ entry }}</a></li>
+            <li><a class="list-page" href="{% url 'encyclopedia:wiki' title=entry%}">{{ entry }}</a></li>
             {% endfor %}
         </ul>
     
