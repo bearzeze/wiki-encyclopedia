@@ -5,10 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    {{ content |safe }}
+    {{ content | safe }}
 
-    <a href="/edit/{{title}}" class="back"><button class="back-btn">Edit</button></a>
-    <a href="/delete/{{title}}" class="back"><button class="back-btn">Delete</button></a>
-
+    <a href="{% url 'encyclopedia:edit_page' title=title %}" class="back"><button class="back-btn">Edit</button></a>
+    <a href="{% url 'encyclopedia:delete_page' title=title %}" class="back"><button class="back-btn">Delete</button></a>
     <a href="{% url 'encyclopedia:index' %}" class="back"><button class="back-btn">Home</button></a>
 {% endblock %}

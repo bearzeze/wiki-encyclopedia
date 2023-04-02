@@ -34,7 +34,7 @@ def get_entry(word):
     for title in [word, word.capitalize(), word.upper()]:
         try:
             f = default_storage.open(f"entries/{title}.md")
-            return f.read().decode("utf-8"), title
+            return (f.read().decode("utf-8"), title)
         except FileNotFoundError:
             continue
     else:

@@ -43,9 +43,8 @@ def search(request):
                 if search_item.lower() in page.lower():
                     entries.append(page)
                     found = True 
-            return render(request, "encyclopedia/search.html", context={"entries": entries, "search_item":search_item, "found":found})         
+            return render(request, "encyclopedia/search.html", context={"entries": entries, "search_item": search_item, "found": found})         
         
-    
     return redirect("encyclopedia:index")
 
 
@@ -62,7 +61,7 @@ def new_page(request):
                 if title.casefold() == entry.casefold():
                     return render(request, 'encyclopedia/create.html', context={"error": True, "title": entry})
            
-            # if this line is executed then, it means no entries in list_entries() with title name
+            # if this line is executed then, it means no entries in list_entries() with typed title name exists
             content= f"# {title}\n" + content
             util.save_entry(title, content)
             return redirect(reverse('encyclopedia:wiki', kwargs={"title": title}))    
@@ -113,13 +112,12 @@ def edit_page(request, title):
 def delete_page(request, title):
     all_entries = util.list_entries()
     print(title)
-    # %20 is blank space 
+    # %20 is blank space
     if title.replace('%20', ' ') in all_entries:
         util.delete_entry(title)
     return redirect(reverse('encyclopedia:index'))
 
 
 def random_page(request):
-    all_entries = util.list_entries()
-    random_entry_title = random.choice(all_entries)
-    return redirect(reverse('encyclopedia:wiki', kwargs={"title": random_entry_title}))
+    all_entries_titles = util.list_entries()
+    return redirect(reverse('encyclopedia:wiki', kwargs={"title": random.choice(all_entries_titles)}))
