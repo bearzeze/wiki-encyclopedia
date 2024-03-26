@@ -14,7 +14,7 @@
                 <h2 class="mb-4 ms-3">Zezepedia</h2>
                 
                 <form action="{% url 'encyclopedia:search' %}" method="get">
-                    <input class="search" type="text" name="q" placeholder="Search Zezepedia    ">
+                    <input class="search" type="text" name="q" placeholder="Search Zezepedia    " autocomplete="off">
                 </form>
                 <div>
                     <a href="{% url 'encyclopedia:index' %}">Home</a>

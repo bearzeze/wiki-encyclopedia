@@ -8,7 +8,7 @@ Zezepedia
     <h1 class="all-pages-heading">All Pages</h1>
     <ul>
         {% for entry in entries %}
-        <li><a class="list-page" href="{% url 'encyclopedia:wiki' title=entry%}">{{ entry }}</a></li>
+        <li><a class="list-page" href="{% url 'encyclopedia:wiki' title=entry %}">{{ entry }}</a></li>
         {% endfor %}
     </ul>
 

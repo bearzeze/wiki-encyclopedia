@@ -19,7 +19,6 @@ def wiki(request, title):
     if content_md:
         convertor = Markdown()
         content_html = str(convertor.convert(content_md)).strip()
-
         return render(request,"encyclopedia/page.html", context={"content": content_html, "title": page_title})
     else:
         return render(request, "encyclopedia/pageNotFound.html", context={"title": title})
@@ -111,7 +110,6 @@ def edit_page(request, title):
 
 def delete_page(request, title):
     all_entries = util.list_entries()
-    print(title)
     # %20 is blank space
     if title.replace('%20', ' ') in all_entries:
         util.delete_entry(title)
