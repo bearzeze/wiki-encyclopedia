@@ -82,9 +82,7 @@ def edit_page(request, title):
         if form.is_valid():
             edited_title = str(form.cleaned_data["title"])
             edited_content = form.cleaned_data["content"]
-            edited_content = edited_content.strip()
-            print(edited_content)
-            
+            edited_content = edited_content.strip()            
             # There should be always in the content # {title} ...
             first_char = edited_content[0]
             if  "#" != first_char:
